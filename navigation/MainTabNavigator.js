@@ -3,7 +3,10 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
+// import Header from '../components/Header';
 import HomeScreen from '../screens/HomeScreen';
+import LogsScreen from '../screens/LogsScreen';
+import MsgsScreen from '../screens/MsgsScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -33,6 +36,47 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
+const LogsStack = createStackNavigator(
+	{
+		Logs: LogsScreen
+	},
+	config
+);
+
+LogsStack.navigationOptions = {
+	tabBarLabel: 'Logs',
+	tabBarIcon: ({ focused }) => (
+		<TabBarIcon
+			focused={focused}
+			name={
+				Platform.OS === 'ios' ? `ios-information-circle${focused ? '' : '-outline'}` : 'md-information-circle'
+			}
+		/>
+	)
+};
+
+LogsStack.path = '';
+
+const MsgsStack = createStackNavigator(
+	{
+		Msgs: MsgsScreen
+	},
+	config
+);
+
+MsgsStack.navigationOptions = {
+	tabBarLabel: 'Msgs',
+	tabBarIcon: ({ focused }) => (
+		<TabBarIcon
+			focused={focused}
+			name={
+				Platform.OS === 'ios' ? `ios-information-circle${focused ? '' : '-outline'}` : 'md-information-circle'
+			}
+		/>
+	)
+};
+
+MsgsStack.path = '';
 
 const LinksStack = createStackNavigator(
 	{
@@ -66,6 +110,8 @@ SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
 	HomeStack,
+	LogsStack,
+	MsgsStack,
 	LinksStack,
 	SettingsStack
 });

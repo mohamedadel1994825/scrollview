@@ -22,11 +22,15 @@ export default function HomeScreen() {
 }
 
 HomeScreen.navigationOptions = {
-	// title: 'null',
-	// Header: null
-
-	// headerTitle: <LogoTitle />
-
+	headerLeft: <View />,
+	headerTitle: (
+		<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center' }}>
+			<Image
+				source={require('../../assets/images/appLogo.png')}
+				style={{ width: 50, height: 50, justifyContent: 'center', alignItems: 'center' }}
+			/>
+		</View>
+	),
 	headerRight: (
 		<Avatar
 			size="small"
@@ -34,16 +38,9 @@ HomeScreen.navigationOptions = {
 			icon={{ name: 'user', type: 'font-awesome' }}
 			onPress={() => console.log('Works!')}
 			activeOpacity={0.7}
-			containerStyle={{ flex: 2, marginTop: 20, marginRight: 10 }}
+			containerStyle={{ flex: 1, marginTop: 10, marginRight: 10 }}
 		/>
 	)
-
-	// headerCenter: (
-	// 	<Image
-	// 		source={require('../../assets/images/appLogo.png')}
-	// 		style={{ width: 30, height: 30, justifyContent: 'center', alignItems: 'center' }}
-	// 	/>
-	// )
 };
 
 const styles = StyleSheet.create({

@@ -12,16 +12,16 @@ import SettingsScreen from '../screens/Main/SettingsScreen';
 // createDrawerNavigator(RouteConfigs, DrawerNavigatorConfig);
 
 const config = Platform.select({
-	web: { headerMode: 'screen' },
-	default: {}
+  web: { headerMode: "screen" },
+  default: {}
 });
 
 // #### HOME STACK ####
 const HomeStack = createStackNavigator(
-	{
-		Home: HomeScreen
-	},
-	config
+  {
+    Home: HomeScreen
+  },
+  config
 );
 
 HomeStack.navigationOptions = {
@@ -33,7 +33,7 @@ HomeStack.navigationOptions = {
 	}
 };
 
-HomeStack.path = '';
+HomeStack.path = "";
 
 // #### REPORTS STACK ####
 const ReportsStack = createStackNavigator(
@@ -99,10 +99,10 @@ UsersStack.navigationOptions = {
 UsersStack.path = '';
 
 const SettingsStack = createStackNavigator(
-	{
-		Settings: SettingsScreen
-	},
-	config
+  {
+    Settings: SettingsScreen
+  },
+  config
 );
 
 SettingsStack.navigationOptions = {
@@ -116,7 +116,7 @@ SettingsStack.navigationOptions = {
 	}
 };
 
-SettingsStack.path = '';
+SettingsStack.path = "";
 
 const tabNavigator = createBottomTabNavigator({
 	HomeStack,
@@ -126,6 +126,6 @@ const tabNavigator = createBottomTabNavigator({
 	SettingsStack
 });
 
-tabNavigator.path = '';
+tabNavigator.path = "";
 
 export default tabNavigator;

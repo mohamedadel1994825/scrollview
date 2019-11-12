@@ -1,15 +1,14 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import { createStackNavigator, createDrawerNavigator, createBottomTabNavigator } from 'react-navigation';
-import Colors from '../constants/Colors';
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/Main/HomeScreen';
-import ReportsScreen from '../screens/Main/ReportsScreen';
-import StockScreen from '../screens/Main/StockScreen';
-import UsersScreen from '../screens/Main/UsersScreen';
-import SettingsScreen from '../screens/Main/SettingsScreen';
-// import { createDrawerNavigator } from 'react-navigation-drawer';
-// createDrawerNavigator(RouteConfigs, DrawerNavigatorConfig);
+// import Header from '../components/Header';
+import HomeScreen from '../screens/HomeScreen';
+import LogsScreen from '../screens/LogsScreen';
+import MsgsScreen from '../screens/MsgsScreen';
+import LinksScreen from '../screens/LinksScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const config = Platform.select({
   web: { headerMode: "screen" },
@@ -26,77 +25,73 @@ const HomeStack = createStackNavigator(
 
 HomeStack.navigationOptions = {
 	tabBarLabel: 'Home',
-	tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-home' : 'md-home'} />,
-	tabBarOptions: {
-		activeTintColor: Colors.tabLabelSelected,
-		inactiveTintColor: Colors.tabIconDefault
-	}
+	tabBarIcon: ({ focused }) => (
+		<TabBarIcon
+			focused={focused}
+			name={
+				Platform.OS === 'ios' ? `ios-information-circle${focused ? '' : '-outline'}` : 'md-information-circle'
+			}
+		/>
+	)
 };
 
 HomeStack.path = "";
 
-// #### REPORTS STACK ####
-const ReportsStack = createStackNavigator(
+const LogsStack = createStackNavigator(
 	{
-		Reports: ReportsScreen
+		Logs: LogsScreen
 	},
 	config
 );
 
-ReportsStack.navigationOptions = {
-	tabBarLabel: 'Reports',
+LogsStack.navigationOptions = {
+	tabBarLabel: 'Logs',
 	tabBarIcon: ({ focused }) => (
-		<TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-stats' : 'md-stats'} />
-	),
-	tabBarOptions: {
-		activeTintColor: Colors.tabLabelSelected,
-		inactiveTintColor: Colors.tabIconDefault
-	}
+		<TabBarIcon
+			focused={focused}
+			name={
+				Platform.OS === 'ios' ? `ios-information-circle${focused ? '' : '-outline'}` : 'md-information-circle'
+			}
+		/>
+	)
 };
 
-ReportsStack.path = '';
+LogsStack.path = '';
 
-// #### STOCK STACK ####
-const StockStack = createStackNavigator(
+const MsgsStack = createStackNavigator(
 	{
-		Stock: StockScreen
+		Msgs: MsgsScreen
 	},
 	config
 );
 
-StockStack.navigationOptions = {
-	tabBarLabel: 'Stock',
+MsgsStack.navigationOptions = {
+	tabBarLabel: 'Msgs',
 	tabBarIcon: ({ focused }) => (
-		<TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-filing' : 'md-filing'} />
-	),
-	tabBarOptions: {
-		activeTintColor: Colors.tabLabelSelected,
-		inactiveTintColor: Colors.tabIconDefault
-	}
+		<TabBarIcon
+			focused={focused}
+			name={
+				Platform.OS === 'ios' ? `ios-information-circle${focused ? '' : '-outline'}` : 'md-information-circle'
+			}
+		/>
+	)
 };
 
-StockStack.path = '';
+MsgsStack.path = '';
 
-// #### USERS STACK ####
-const UsersStack = createStackNavigator(
+const LinksStack = createStackNavigator(
 	{
-		Users: UsersScreen
+		Links: LinksScreen
 	},
 	config
 );
 
-UsersStack.navigationOptions = {
-	tabBarLabel: 'Users',
-	tabBarIcon: ({ focused }) => (
-		<TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-people' : 'md-people'} />
-	),
-	tabBarOptions: {
-		activeTintColor: Colors.tabLabelSelected,
-		inactiveTintColor: Colors.tabIconDefault
-	}
+LinksStack.navigationOptions = {
+	tabBarLabel: 'Links',
+	tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
 };
 
-UsersStack.path = '';
+LinksStack.path = '';
 
 const SettingsStack = createStackNavigator(
   {
@@ -109,20 +104,16 @@ SettingsStack.navigationOptions = {
 	tabBarLabel: 'Settings',
 	tabBarIcon: ({ focused }) => (
 		<TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-	),
-	tabBarOptions: {
-		activeTintColor: Colors.tabLabelSelected,
-		inactiveTintColor: Colors.tabIconDefault
-	}
+	)
 };
 
 SettingsStack.path = "";
 
 const tabNavigator = createBottomTabNavigator({
 	HomeStack,
-	ReportsStack,
-	StockStack,
-	UsersStack,
+	LogsStack,
+	MsgsStack,
+	LinksStack,
 	SettingsStack
 });
 

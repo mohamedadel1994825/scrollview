@@ -9,10 +9,13 @@ import StockScreen from '../screens/Main/StockScreen';
 import UsersScreen from '../screens/Main/UsersScreen';
 import SettingsScreen from '../screens/Main/SettingsScreen';
 
+
 const config = Platform.select({
 	web: { headerMode: 'screen' },
 	default: {}
 });
+
+
 
 // #### HOME STACK ####
 const HomeStack = createStackNavigator(
